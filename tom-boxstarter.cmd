@@ -20,7 +20,7 @@ Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleB
 
 # Default to the desktop rather than application launcher
 Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -EnableShowStartOnActiveScreen -EnableShowAppsViewOnStartScreen -EnableSearchEverywhereInAppsView -EnableListDesktopAppsFirst
-
+if (Test-PendingReboot) { Invoke-Reboot }
 
 
 #====================================================
@@ -29,6 +29,7 @@ Update-ExecutionPolicy Unrestricted -Force
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
 Enable-RemoteDesktop
 Disable-InternetExplorerESC
+if (Test-PendingReboot) { Invoke-Reboot }
 
 
 #====================================================
@@ -41,7 +42,7 @@ powercfg -x -monitor-timeout-ac 20
 #powercfg -x -hibernate-timeout-dc 0
 powercfg -x -disk-timeout-ac 10
 #powercfg -x -disk-timeout-dc 20
-
+if (Test-PendingReboot) { Invoke-Reboot }
 #====================================================
 # Programs and Tools
 cinst -y PowerShell
