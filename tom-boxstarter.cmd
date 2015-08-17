@@ -6,12 +6,22 @@
 # START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/tom-boxstarter.cmd
 #===================================================
 
+# Show more info for files in Explorer
+Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar
+
+# Default to the desktop rather than application launcher
+Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -EnableShowStartOnActiveScreen -EnableShowAppsViewOnStartScreen -EnableSearchEverywhereInAppsView -EnableListDesktopAppsFirst
+
+
 #==================================================== 
 # Boxstarter options
 $Boxstarter.RebootOk=$true # Allow reboots?
-$Boxstarter.NoPassword=$false # Is this a machine with no login password?
 $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
 
+
+# Update Windows and reboot if necessary
+Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
 
 #====================================================
 # Basic Setup
@@ -21,10 +31,6 @@ Enable-RemoteDesktop
 Enable-MicrosoftUpdate
 Disable-InternetExplorerESC
 
-
-#====================================================
-# Windows Update
-Install-WindowsUpdate -getUpdatesFromMS -acceptEula -SuppressReboots
 
 #====================================================
 # Power Configuration
