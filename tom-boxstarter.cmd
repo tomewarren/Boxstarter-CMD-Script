@@ -3,8 +3,8 @@
 # 1.Install Windows
 # 2.Login.
 # 3.Open a command prompt and enter the following:
-# START http://boxstarter.org/package/nr/url?https://gist.githubusercontent.com/tomewarren/b57e99a2df8782829552/raw/0376eba0f5f05f26c40662208111b10ddd7ade47/tom-boxstarter.cmd
-#====================================================
+# START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/tom-boxstarter.cmd
+#===================================================
 
 #==================================================== 
 # Boxstarter options
