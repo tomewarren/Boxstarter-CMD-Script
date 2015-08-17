@@ -5,6 +5,15 @@
 # 3.Open a command prompt and enter the following:
 # START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/tom-boxstarter.cmd
 #===================================================
+#==================================================== 
+# Boxstarter options
+$Boxstarter.RebootOk=$true # Allow reboots?
+$Boxstarter.AutoLogin=$false # Save my password securely and auto-login after a reboot
+
+
+# Update Windows and reboot if necessary
+Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
 
 # Show more info for files in Explorer
 Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar
@@ -13,15 +22,6 @@ Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleB
 Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -EnableShowStartOnActiveScreen -EnableShowAppsViewOnStartScreen -EnableSearchEverywhereInAppsView -EnableListDesktopAppsFirst
 
 
-#==================================================== 
-# Boxstarter options
-$Boxstarter.RebootOk=$true # Allow reboots?
-$Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
-
-
-# Update Windows and reboot if necessary
-Install-WindowsUpdate -AcceptEula
-if (Test-PendingReboot) { Invoke-Reboot }
 
 #====================================================
 # Basic Setup
