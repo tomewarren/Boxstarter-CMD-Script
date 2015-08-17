@@ -28,19 +28,18 @@ if (Test-PendingReboot) { Invoke-Reboot }
 Update-ExecutionPolicy Unrestricted -Force
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
 Enable-RemoteDesktop
-Enable-MicrosoftUpdate
 Disable-InternetExplorerESC
 
 
 #====================================================
 # Power Configuration
-#powercfg -x -standby-timeout-ac 0
+powercfg -x -standby-timeout-ac 30
 #powercfg -x -standby-timeout-dc 0
 powercfg -x -monitor-timeout-ac 20
 #powercfg -x -monitor-timeout-dc 10
 #powercfg -x -hibernate-timeout-ac 0
 #powercfg -x -hibernate-timeout-dc 0
-#powercfg -x -disk-timeout-ac 20
+powercfg -x -disk-timeout-ac 10
 #powercfg -x -disk-timeout-dc 20
 
 #====================================================
@@ -50,14 +49,14 @@ cinst -y PowerShell
 cinst -y 7zip.install
 cinst -y teamviewer
 cinst -y googlechrome
-cinst -y filezilla
-cinst -y Gow
-cinst -y lockhunter
+# cinst -y filezilla
+# cinst -y Gow
+# cinst -y lockhunter
 cinst -y sysinternals
 #cinst -y putty.install
 cinst -y kitty.portable
 cinst -y notepadplusplus.install
-cinst -y ConsoleZ.WithPin
+# cinst -y ConsoleZ.WithPin
 #cinst -y paint.net
 #cinst -y vlc
 #cinst -y cccp
@@ -79,8 +78,8 @@ cinst -y win-no-annoy
 
 #====================================================
 # Source Control
-cinst -y git.install
-cinst -y poshgit
+# cinst -y git.install
+# cinst -y poshgit
 #cinst -y SourceTree
 
 #====================================================
@@ -155,7 +154,7 @@ Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Notepad++\Not
 
 #====================================================
 # Windows Features
-cinst -y Microsoft-Hyper-V-All -source windowsFeatures
+# cinst -y Microsoft-Hyper-V-All -source windowsFeatures
 # cinst -y IIS-WebServerRole -source windowsfeatures
 
 #====================================================
