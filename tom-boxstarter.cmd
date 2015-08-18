@@ -7,7 +7,7 @@
 #===================================================
 #==================================================== 
 # Boxstarter options
-$Boxstarter.RebootOk=$true # Allow reboots?
+$Boxstarter.RebootOk=$false # Allow reboots?
 $Boxstarter.AutoLogin=$false # Save my password securely and auto-login after a reboot
 
 
