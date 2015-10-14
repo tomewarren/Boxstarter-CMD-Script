@@ -7,8 +7,8 @@
 #===================================================
 #==================================================== 
 # Boxstarter options
-$Boxstarter.RebootOk=$false # Allow reboots?
-$Boxstarter.AutoLogin=$false # Save my password securely and auto-login after a reboot
+$Boxstarter.RebootOk=$true # Allow reboots?
+$Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
 
 
 # Update Windows and reboot if necessary
@@ -47,9 +47,9 @@ cinst -y PowerShell
 cinst -y 7zip.install
 cinst -y teamviewer
 cinst -y googlechrome
- cinst -y filezilla
- cinst -y Gow
- cinst -y lockhunter
+cinst -y filezilla
+# cinst -y Gow
+#cinst -y lockhunter
 cinst -y sysinternals
 #cinst -y putty.install
 cinst -y kitty.portable
@@ -76,16 +76,16 @@ cinst -y win-no-annoy
 
 #====================================================
 # Source Control
- cinst -y git.install
+# cinst -y git.install
 # cinst -y poshgit
 #cinst -y SourceTree
 
 #====================================================
 # .NET Development
- cinst -y VisualStudioCommunity2013
- cinst -y VS2013.4
- cinst -y VS2013.VSCommands
- cinst -y visualstudio2013-sdk
+# cinst -y VisualStudioCommunity2013
+# cinst -y VS2013.4
+# cinst -y VS2013.VSCommands
+# cinst -y visualstudio2013-sdk
 # cinst -y cloc
 # cinst -y expresso
 # cinst -y nunit
@@ -93,7 +93,7 @@ cinst -y win-no-annoy
 # cinst -y dotpeek
 # cinst -y resharper
 # cinst -y WinMerge
-cinst -y cmake
+# cinst -y cmake
 # cinst -y tfs2013powertools
 
 #====================================================
@@ -140,7 +140,7 @@ Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Notepad++\Not
 # Install-ChocolateyVsixPackage boost-test-adapter https://visualstudiogallery.msdn.microsoft.com/5f4ae1bd-b769-410e-8238-fb30beda987f/file/105652/19/BoostUnitTestAdapter.vsix
 # Install-ChocolateyVsixPackage web-essentials https://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f/file/50769/32/WebEssentials.vsix
 # Install-ChocolateyVsixPackage chutzpah https://visualstudiogallery.msdn.microsoft.com/f8741f04-bae4-4900-81c7-7c9bfb9ed1fe/file/66979/28/Chutzpah.VS2012.vsix
-Install-ChocolateyVsixPackage editor-config https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328/file/75539/12/EditorConfigPlugin.vsix
+#Install-ChocolateyVsixPackage editor-config https://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328/file/75539/12/EditorConfigPlugin.vsix
 # Install-ChocolateyVsixPackage file-nesting https://visualstudiogallery.msdn.microsoft.com/3ebde8fb-26d8-4374-a0eb-1e4e2665070c/file/123284/11/FileNesting.vsix
 # Install-ChocolateyVsixPackage grunt-launcher https://visualstudiogallery.msdn.microsoft.com/dcbc5325-79ef-4b72-960e-0a51ee33a0ff/file/109075/17/GruntLauncher.vsix
 # Install-ChocolateyVsixPackage multi-editing https://visualstudiogallery.msdn.microsoft.com/2beb9705-b568-45d1-8550-751e181e3aef/file/93630/8/MultiEdit.vsix
