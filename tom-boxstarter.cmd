@@ -32,6 +32,7 @@ powercfg -x -monitor-timeout-ac 20
 #====================================================
 # Programs and Tools
 cinst -y PowerShell
+cinst -y terminals
 #cinst -y 7zip.commandline
 cinst -y 7zip.install
 cinst -y teamviewer
