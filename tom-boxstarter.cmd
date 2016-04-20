@@ -32,36 +32,36 @@ powercfg -x -monitor-timeout-ac 20
 #====================================================
 # Programs and Tools
 cinst -y PowerShell
-cinst -y terminals
+#cinst -y terminals
 #cinst -y 7zip.commandline
 cinst -y 7zip.install
 cinst -y teamviewer
-cinst -y googlechrome
-cinst -y filezilla
+#cinst -y googlechrome
+#cinst -y filezilla
 # cinst -y Gow
 #cinst -y lockhunter
 cinst -y sysinternals
 #cinst -y putty.install
-cinst -y kitty.portable
+#cinst -y kitty.portable
 cinst -y notepadplusplus.install
 # cinst -y ConsoleZ.WithPin
 #cinst -y paint.net
 cinst -y vlc
 #cinst -y cccp
 cinst -y dropbox
-cinst -y evernote
+#cinst -y evernote
 cinst -y greenshot -Version 1.1.9.13
 #cinst -y IcoFx
-cinst -y imgburn
+#cinst -y imgburn
 cinst -y javaruntime
 #cinst -y markdownpad2
 #cinst -y sumatrapdf.install
 #cinst -y skype
 #cinst -y truecrypt
 cinst -y windirstat
-cinst -y CCleaner
+#cinst -y CCleaner
 #cinst -y CutePDF
-cinst -y Silverlight
+#cinst -y Silverlight
 cinst -y win-no-annoy
 
 #====================================================
