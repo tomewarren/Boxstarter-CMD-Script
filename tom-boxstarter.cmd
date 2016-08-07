@@ -63,6 +63,7 @@ cinst -y windirstat
 #cinst -y CutePDF
 #cinst -y Silverlight
 cinst -y win-no-annoy
+cinst -y chocolatey
 
 #====================================================
 # Source Control
