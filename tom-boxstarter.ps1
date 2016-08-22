@@ -3,7 +3,7 @@
 # 1.Install Windows
 # 2.Login.
 # 3.Open an [ADMIN] command prompt and enter the following:
-# START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/tom-boxstarter.cmd
+# START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/tom-boxstarter.ps1
 #===================================================
 #==================================================== 
 # Boxstarter options
@@ -64,6 +64,44 @@ cinst -y windirstat
 #cinst -y Silverlight
 cinst -y win-no-annoy
 cinst -y chocolatey
+cinst -y 7zip.commandline
+cinst -y 7zip.install
+cinst -y autohotkey.portable
+cinst -y chocolatey
+cinst -y ChocolateyGUI
+cinst -y ConEmu
+cinst -y DotNet4.5
+cinst -y DotNet4.5.1
+cinst -y dropbox
+cinst -y EthanBrown.ConEmuConfig
+cinst -y Evernote
+cinst -y Everything
+cinst -y f.lux
+cinst -y flashplayerplugin
+cinst -y git
+cinst -y git.install
+cinst -y gitextensions
+cinst -y GoogleChrome
+cinst -y jbs
+cinst -y kitty
+cinst -y lastpass
+cinst -y lastpass-for-applications
+cinst -y multimonitortool
+cinst -y PowerShell
+cinst -y qbittorrent
+cinst -y rufus
+cinst -y rufus.install
+cinst -y SourceCodePro
+cinst -y teamviewer
+cinst -y toolsroot
+cinst -y totalcommander
+cinst -y treesizefree
+cinst -y ubuntu.font
+cinst -y VisualStudioCode
+cinst -y windirstat
+cinst -y Xming
+
+
 
 #====================================================
 # Source Control
