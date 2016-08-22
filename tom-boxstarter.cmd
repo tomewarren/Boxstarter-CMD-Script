@@ -15,7 +15,7 @@ $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a r
 # Basic Setup
 Update-ExecutionPolicy Unrestricted -Force
 Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
-Enable-RemoteDesktop
+# Enable-RemoteDesktop
 Disable-InternetExplorerESC
 
 
