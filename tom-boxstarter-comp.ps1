@@ -36,7 +36,7 @@ cinst -y PowerShell
 #cinst -y terminals
 #cinst -y 7zip.commandline
 cinst -y 7zip.install
-cinst -y teamviewer
+#cinst -y teamviewer
 #cinst -y googlechrome
 #cinst -y filezilla
 # cinst -y Gow
@@ -47,11 +47,11 @@ cinst -y sysinternals
 cinst -y notepadplusplus.install
 # cinst -y ConsoleZ.WithPin
 #cinst -y paint.net
-cinst -y vlc
+#cinst -y vlc
 #cinst -y cccp
-cinst -y dropbox
+#cinst -y dropbox
 #cinst -y evernote
-cinst -y greenshot -Version 1.1.9.13
+#cinst -y greenshot -Version 1.1.9.13
 #cinst -y IcoFx
 #cinst -y imgburn
 cinst -y javaruntime
@@ -67,40 +67,40 @@ cinst -y win-no-annoy
 cinst -y chocolatey
 cinst -y 7zip.commandline
 cinst -y 7zip.install
-cinst -y autohotkey.portable
+#cinst -y autohotkey.portable
 cinst -y chocolatey
 cinst -y ChocolateyGUI
-cinst -y ConEmu
+#cinst -y ConEmu
 cinst -y DotNet4.5
 cinst -y DotNet4.5.1
-cinst -y dropbox
-cinst -y EthanBrown.ConEmuConfig
-cinst -y Evernote
-cinst -y Everything
-cinst -y f.lux
+#cinst -y dropbox
+#cinst -y EthanBrown.ConEmuConfig
+#cinst -y Evernote
+#cinst -y Everything
+#cinst -y f.lux
 cinst -y flashplayerplugin
-cinst -y git
-cinst -y git.install
-cinst -y gitextensions
+#cinst -y git
+#cinst -y git.install
+#cinst -y gitextensions
 cinst -y GoogleChrome
-cinst -y jbs
-cinst -y kitty
-cinst -y lastpass
-cinst -y lastpass-for-applications
-cinst -y multimonitortool
+#cinst -y jbs
+#cinst -y kitty
+#cinst -y lastpass
+#cinst -y lastpass-for-applications
+#cinst -y multimonitortool
 cinst -y PowerShell
-cinst -y qbittorrent
-cinst -y rufus
-cinst -y rufus.install
-cinst -y SourceCodePro
-cinst -y teamviewer
+#cinst -y qbittorrent
+#cinst -y rufus
+#cinst -y rufus.install
+#cinst -y SourceCodePro
+#cinst -y teamviewer
 cinst -y toolsroot
-cinst -y totalcommander
-cinst -y treesizefree
+#cinst -y totalcommander
+#cinst -y treesizefree
 cinst -y ubuntu.font
-cinst -y VisualStudioCode
+#cinst -y VisualStudioCode
 cinst -y windirstat
-cinst -y Xming
+#cinst -y Xming
 
 
 
@@ -136,7 +136,7 @@ cinst -y Xming
 # Android Development
 #cinst -y java.jdk
 #cinst -y AndroidStudio
-cinst -y android-sdk
+#cinst -y android-sdk
 #cinst -y xamarin-studio
 
 #====================================================
@@ -166,7 +166,7 @@ Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Notepad++\Not
 
 #====================================================
 # Windows Features
-cinst -y Microsoft-Hyper-V-All -source windowsFeatures
+#cinst -y Microsoft-Hyper-V-All -source windowsFeatures
 # cinst -y IIS-WebServerRole -source windowsfeatures
 
 #====================================================
