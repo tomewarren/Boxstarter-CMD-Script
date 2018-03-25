@@ -1,10 +1,10 @@
 #====================================================
 # Setting up a new machine using BoxStarter
+# tom-boxstarter-comp.ps1
 # 1.Install Windows
 # 2.Login.
 # 3.Open an [ADMIN] command prompt and enter the following:
-# START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/tom-boxstarter.ps1
-
+# START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/tom-boxstarter-comp.ps1
 #===================================================
 #==================================================== 
 # Boxstarter options
