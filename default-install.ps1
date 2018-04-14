@@ -1,4 +1,4 @@
-# START http://boxstarter.org/package/nr/url? ----path----
+# START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/default-install.ps1
 
 # Boxstarter options
 $Boxstarter.RebootOk=$true # Allow reboots?
