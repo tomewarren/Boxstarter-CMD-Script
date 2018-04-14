@@ -1,11 +1,13 @@
 # START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/default-install.ps1
 
 # Boxstarter options
+Write-Host "Boxstarter Options"
 $Boxstarter.RebootOk=$true # Allow reboots?
 $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
 
 
 #--- Configuration ---
+Write-Host "Config"
 #$gaming = $True
 $computername = "lt-twarren"
 
@@ -13,11 +15,14 @@ $computername = "lt-twarren"
 Disable-UAC
 
 #--- Fonts ---
+Write-Host "Fonts"
 choco install inconsolata -y
 choco install -y ubuntu.font
+choco install -y Chocolatey 
 
   
 #--- Windows Settings ---
+Write-Host "Win Settings"
 Disable-BingSearch
 Disable-GameBarTips
 
@@ -30,15 +35,18 @@ Disable-InternetExplorerESC
 
 
 #--- Windows Subsystems/Features ---
+Write-Host "linux?"
 choco install Microsoft-Hyper-V-All -source windowsFeatures -y
 choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures -y
 
 #--- Install Ubuntu in WSL
 lxrun /install /y
 
+Write-Host "tools!"
 #--- Tools ---
 choco install sysinternals -y
 
+Write-Host "apps"
 #--- Apps ---
 cinst -y powershell
 choco install googlechrome -y
@@ -59,6 +67,7 @@ If ($gaming -eq $True) {
     choco install discord -y
 }
 
+Write-Host "files!"
 #--- Notepad++ file Association ---
 Install-ChocolateyFileAssociation ".txt" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
 Install-ChocolateyFileAssociation ".xml" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
@@ -72,10 +81,9 @@ Install-ChocolateyFileAssociation ".bash" "${env:ProgramFiles}\Notepad++\Notepad
 Install-ChocolateyFileAssociation ".html" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
 Install-ChocolateyFileAssociation ".py" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
 
-if (Test-PendingReboot) { Invoke-Reboot }
-
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 
+Write-Host "Uninstall stuff"
 # 3D Builder
 Get-AppxPackage Microsoft.3DBuilder | Remove-AppxPackage
 
@@ -194,6 +202,7 @@ Get-AppxPackage Microsoft.XboxIdentityProvider | Remove-AppxPackage
 Get-AppxPackage Microsoft.ZuneMusic | Remove-AppxPackage
 Get-AppxPackage Microsoft.ZuneVideo | Remove-AppxPackage
 
+Write-Host "more win stuff"
 #--- Windows Settings ---
 # Some from: @NickCraver's gist https://gist.github.com/NickCraver/7ebf9efbfd0c3eab72e9
 
