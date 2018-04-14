@@ -1,186 +1,290 @@
-#====================================================
-# Setting up a new machine using BoxStarter
-# tom-boxstarter-comp.ps1
-# 1.Install Windows
-# 2.Login.
-# 3.Open an [ADMIN] command prompt and enter the following:
-# START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/tom-boxstarter-comp.ps1
-#===================================================
-#==================================================== 
+# START http://boxstarter.org/package/nr/url? ----path----
+
 # Boxstarter options
 $Boxstarter.RebootOk=$true # Allow reboots?
 $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
 
 
-#====================================================
-# Basic Setup
+#--- Configuration ---
+#$gaming = $True
+$computername = "lt-twarren"
+
+#---- TEMPORARY ---
+Disable-UAC
+
+#--- Fonts ---
+choco install inconsolata -y
+choco install -y ubuntu.font
+
+  
+#--- Windows Settings ---
+Disable-BingSearch
+Disable-GameBarTips
+
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar -EnableOpenFileExplorerToQuickAccess -EnableShowRecentFilesInQuickAccess -EnableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder
+Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -Lock
+Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -AlwaysShowIconsOn
 Update-ExecutionPolicy Unrestricted -Force
-Set-ExplorerOptions -showHidenFilesFoldersDrives -showFileExtensions
 Enable-RemoteDesktop
 Disable-InternetExplorerESC
 
 
-#====================================================
-# Power Configuration
-#powercfg -x -standby-timeout-ac 30
-#powercfg -x -standby-timeout-dc 0
-powercfg -x -monitor-timeout-ac 20
-#powercfg -x -monitor-timeout-dc 10
-#powercfg -x -hibernate-timeout-ac 0
-#powercfg -x -hibernate-timeout-dc 0
-#powercfg -x -disk-timeout-ac 10
-#powercfg -x -disk-timeout-dc 20
-#====================================================
-# Programs and Tools
-cinst -y PowerShell
-#cinst -y terminals
-#cinst -y 7zip.commandline
-#cinst -y teamviewer
-#cinst -y googlechrome
-#cinst -y filezilla
-# cinst -y Gow
-#cinst -y lockhunter
-cinst -y sysinternals
-#cinst -y putty.install
-#cinst -y kitty.portable
-cinst -y notepadplusplus.install
-# cinst -y ConsoleZ.WithPin
-#cinst -y paint.net
-#cinst -y vlc
-#cinst -y cccp
-#cinst -y dropbox
-#cinst -y evernote
-#cinst -y greenshot -Version 1.1.9.13
-#cinst -y IcoFx
-#cinst -y imgburn
-#cinst -y javaruntime
-#cinst -y markdownpad2
-#cinst -y sumatrapdf.install
-#cinst -y skype
-#cinst -y truecrypt
+#--- Windows Subsystems/Features ---
+choco install Microsoft-Hyper-V-All -source windowsFeatures -y
+choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures -y
+
+#--- Install Ubuntu in WSL
+lxrun /install /y
+
+#--- Tools ---
+choco install sysinternals -y
+
+#--- Apps ---
+cinst -y powershell
+choco install googlechrome -y
+choco install firefox -y
+choco install docker-for-windows -y
+choco install notepadplusplus -y
 cinst -y windirstat
-#cinst -y CCleaner
-#cinst -y CutePDF
-#cinst -y Silverlight
-cinst -y win-no-annoy
+choco install cmder -y
 cinst -y chocolatey
 cinst -y ChocolateyGUI
-#cinst -y 7zip.commandline
 cinst -y 7zip.install
-#cinst -y autohotkey.portable
-#cinst -y ConEmu
 cinst -y DotNet4.5
 cinst -y DotNet4.5.1
-#cinst -y dropbox
-#cinst -y EthanBrown.ConEmuConfig
-#cinst -y Evernote
-#cinst -y Everything
-#cinst -y f.lux
-#cinst -y flashplayerplugin
-#cinst -y git
-#cinst -y git.install
-#cinst -y gitextensions
-cinst -y GoogleChrome
-cinst -y firefox
-#cinst -y jbs
-#cinst -y kitty
-#cinst -y lastpass
-#cinst -y lastpass-for-applications
-#cinst -y multimonitortool
-cinst -y PowerShell
-#cinst -y qbittorrent
-#cinst -y rufus
-#cinst -y rufus.install
-#cinst -y SourceCodePro
-#cinst -y teamviewer
-cinst -y toolsroot
-#cinst -y totalcommander
-#cinst -y treesizefree
-cinst -y ubuntu.font
-#cinst -y VisualStudioCode
-cinst -y windirstat
-#cinst -y Xming
 
+If ($gaming -eq $True) {
+    choco install steam -y
+    choco install obs-studio -y
+    choco install discord -y
+}
 
+#--- Notepad++ file Association ---
+Install-ChocolateyFileAssociation ".txt" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".xml" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".nuspec" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".config" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".ps1" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".bat" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".sh" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".log" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".bash" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".html" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".py" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
 
-#====================================================
-# Source Control
-# cinst -y git.install
-# cinst -y poshgit
-#cinst -y SourceTree
+if (Test-PendingReboot) { Invoke-Reboot }
 
-#====================================================
-# .NET Development
-# cinst -y VisualStudioCommunity2013
-# cinst -y VS2013.4
-# cinst -y VS2013.VSCommands
-# cinst -y visualstudio2013-sdk
-# cinst -y cloc
-# cinst -y expresso
-# cinst -y nunit
-# cinst -y xunit
-# cinst -y dotpeek
-# cinst -y resharper
-# cinst -y WinMerge
-# cinst -y cmake
-# cinst -y tfs2013powertools
+#--- Uninstall unecessary applications that come with Windows out of the box ---
 
-#====================================================
-# Web Development
-#cinst -y nodejs.install
-#cinst -y Yeoman
-#cinst -y fiddler4
+# 3D Builder
+Get-AppxPackage Microsoft.3DBuilder | Remove-AppxPackage
 
-#====================================================
-# Android Development
-#cinst -y java.jdk
-#cinst -y AndroidStudio
-#cinst -y android-sdk
-#cinst -y xamarin-studio
+# Alarms
+Get-AppxPackage Microsoft.WindowsAlarms | Remove-AppxPackage
 
-#====================================================
-# Python
-#cinst -y python
-#cinst -y python2
+# Autodesk
+Get-AppxPackage *Autodesk* | Remove-AppxPackage
 
-#====================================================
-# Ruby
-# cinst -y ruby
-# cinst -y ruby.devkit
-# cinst -y Compass
-# cinst -y sass
+# Bing Weather, News, Sports, and Finance (Money):
+Get-AppxPackage Microsoft.BingFinance | Remove-AppxPackage
+Get-AppxPackage Microsoft.BingNews | Remove-AppxPackage
+Get-AppxPackage Microsoft.BingSports | Remove-AppxPackage
+Get-AppxPackage Microsoft.BingWeather | Remove-AppxPackage
 
-#====================================================
-# File Associations
-Install-ChocolateyFileAssociation ".txt" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".xml" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".nuspec" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".config" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+# BubbleWitch
+Get-AppxPackage *BubbleWitch* | Remove-AppxPackage
 
-#====================================================
-# Pin to the taskbar
-Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles)\Google\Chrome\Application\chrome.exe"
-Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Evernote\Evernote\evernote.exe"
-Install-ChocolateyPinnedTaskBarItem "$($Boxstarter.programFiles86)\Notepad++\Notepad++.exe"
+# Candy Crush
+Get-AppxPackage king.com.CandyCrush* | Remove-AppxPackage
 
-#====================================================
-# Windows Features
-#cinst -y Microsoft-Hyper-V-All -source windowsFeatures
-# cinst -y IIS-WebServerRole -source windowsfeatures
+# Comms Phone
+Get-AppxPackage Microsoft.CommsPhone | Remove-AppxPackage
 
-#====================================================
+# Dell
+Get-AppxPackage *Dell* | Remove-AppxPackage
 
+# Dropbox
+Get-AppxPackage *Dropbox* | Remove-AppxPackage
+
+# Facebook
+Get-AppxPackage *Facebook* | Remove-AppxPackage
+
+# Feedback Hub
+Get-AppxPackage Microsoft.WindowsFeedbackHub | Remove-AppxPackage
+
+# Get Started
+Get-AppxPackage Microsoft.Getstarted | Remove-AppxPackage
+
+# Keeper
+Get-AppxPackage *Keeper* | Remove-AppxPackage
+
+# Mail & Calendar
+Get-AppxPackage microsoft.windowscommunicationsapps | Remove-AppxPackage
+
+# Maps
+Get-AppxPackage Microsoft.WindowsMaps | Remove-AppxPackage
+
+# March of Empires
+Get-AppxPackage *MarchofEmpires* | Remove-AppxPackage
+
+# McAfee Security
+Get-AppxPackage *McAfee* | Remove-AppxPackage
+
+# Uninstall McAfee Security App
+$mcafee = gci "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | foreach { gp $_.PSPath } | ? { $_ -match "McAfee Security" } | select UninstallString
+if ($mcafee) {
+	$mcafee = $mcafee.UninstallString -Replace "C:\Program Files\McAfee\MSC\mcuihost.exe",""
+	Write "Uninstalling McAfee..."
+	start-process "C:\Program Files\McAfee\MSC\mcuihost.exe" -arg "$mcafee" -Wait
+}
+
+# Messaging
+Get-AppxPackage Microsoft.Messaging | Remove-AppxPackage
+
+# Minecraft
+Get-AppxPackage *Minecraft* | Remove-AppxPackage
+
+# Netflix
+Get-AppxPackage *Netflix* | Remove-AppxPackage
+
+# Office Hub
+Get-AppxPackage Microsoft.MicrosoftOfficeHub | Remove-AppxPackage
+
+# One Connect
+Get-AppxPackage Microsoft.OneConnect | Remove-AppxPackage
+
+# OneNote
+Get-AppxPackage Microsoft.Office.OneNote | Remove-AppxPackage
+
+# People
+Get-AppxPackage Microsoft.People | Remove-AppxPackage
+
+# Phone
+Get-AppxPackage Microsoft.WindowsPhone | Remove-AppxPackage
+
+# Photos
+Get-AppxPackage Microsoft.Windows.Photos | Remove-AppxPackage
+
+# Plex
+Get-AppxPackage *Plex* | Remove-AppxPackage
+
+# Skype (Metro version)
+Get-AppxPackage Microsoft.SkypeApp | Remove-AppxPackage
+
+# Sound Recorder
+Get-AppxPackage Microsoft.WindowsSoundRecorder | Remove-AppxPackage
+
+# Solitaire
+Get-AppxPackage *Solitaire* | Remove-AppxPackage
+
+# Sticky Notes
+Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
+
+# Sway
+Get-AppxPackage Microsoft.Office.Sway | Remove-AppxPackage
+
+# Twitter
+Get-AppxPackage *Twitter* | Remove-AppxPackage
+
+# Xbox
+Get-AppxPackage Microsoft.XboxApp | Remove-AppxPackage
+Get-AppxPackage Microsoft.XboxIdentityProvider | Remove-AppxPackage
+
+# Zune Music, Movies & TV
+Get-AppxPackage Microsoft.ZuneMusic | Remove-AppxPackage
+Get-AppxPackage Microsoft.ZuneVideo | Remove-AppxPackage
+
+#--- Windows Settings ---
+# Some from: @NickCraver's gist https://gist.github.com/NickCraver/7ebf9efbfd0c3eab72e9
+
+# Privacy: Let apps use my advertising ID: Disable
+If (-Not (Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo")) {
+    New-Item -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo | Out-Null
+}
+Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo -Name Enabled -Type DWord -Value 0
+
+# WiFi Sense: HotSpot Sharing: Disable
+If (-Not (Test-Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting")) {
+    New-Item -Path HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting | Out-Null
+}
+Set-ItemProperty -Path HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting -Name value -Type DWord -Value 0
+
+# WiFi Sense: Shared HotSpot Auto-Connect: Disable
+Set-ItemProperty -Path HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots -Name value -Type DWord -Value 0
+
+# Start Menu: Disable Bing Search Results
+Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search -Name BingSearchEnabled -Type DWord -Value 0
+# To Restore (Enabled):
+# Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search -Name BingSearchEnabled -Type DWord -Value 1
+
+# Disable Telemetry (requires a reboot to take effect)
+# Note this may break Insider builds for your organization
+# Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection -Name AllowTelemetry -Type DWord -Value 0
+# Get-Service DiagTrack,Dmwappushservice | Stop-Service | Set-Service -StartupType Disabled
+
+# Change Explorer home screen back to "This PC"
+Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
+# Change it back to "Quick Access" (Windows 10 default)
+# Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 2
+
+# Better File Explorer
+Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name NavPaneExpandToCurrentFolder -Value 1		
+Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name NavPaneShowAllFolders -Value 1		
+Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name MMTaskbarMode -Value 2
+
+# These make "Quick Access" behave much closer to the old "Favorites"
+# Disable Quick Access: Recent Files
+Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name ShowRecent -Type DWord -Value 0
+# Disable Quick Access: Frequent Folders
+Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name ShowFrequent -Type DWord -Value 0
+# To Restore:
+# Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name ShowRecent -Type DWord -Value 1
+# Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name ShowFrequent -Type DWord -Value 1
+
+# Disable the Lock Screen (the one before password prompt - to prevent dropping the first character)
+If (-Not (Test-Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization)) {
+	New-Item -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows -Name Personalization | Out-Null
+}
+Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization -Name NoLockScreen -Type DWord -Value 1
+# To Restore:
+# Set-ItemProperty -Path HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization -Name NoLockScreen -Type DWord -Value 1
+
+# Lock screen (not sleep) on lid close
+#Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power' -Name AwayModeEnabled -Type DWord -Value 1
+# To Restore:
+# Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power' -Name AwayModeEnabled -Type DWord -Value 0
+
+# Use the Windows 7-8.1 Style Volume Mixer
+If (-Not (Test-Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\MTCUVC")) {
+	New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name MTCUVC | Out-Null
+}
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\MTCUVC" -Name EnableMtcUvc -Type DWord -Value 0
+# To Restore (Windows 10 Style Volume Control):
+# Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\MTCUVC" -Name EnableMtcUvc -Type DWord -Value 1
+
+# Disable Xbox Gamebar
+Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" -Name AppCaptureEnabled -Type DWord -Value 0
+Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name GameDVR_Enabled -Type DWord -Value 0
+
+# Turn off People in Taskbar
+If (-Not (Test-Path "HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People")) {
+    New-Item -Path HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People | Out-Null
+}
+Set-ItemProperty -Path "HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name PeopleBand -Type DWord -Value 0
+
+#--- Restore Temporary Settings ---
+Enable-UAC
+Enable-MicrosoftUpdate
+Install-WindowsUpdate -acceptEula
+
+#--- Rename the Computer ---
+# Requires restart, or add the -Restart flag
+if ($env:computername -ne $computername) {
+	Rename-Computer -NewName $computername
+}
 
 # Update Windows and reboot if necessary
 Install-WindowsUpdate -AcceptEula
 
-# Show more info for files in Explorer
-Set-WindowsExplorerOptions -EnableShowFileExtensions -EnableShowFullPathInTitleBar
-
-# Default to the desktop rather than application launcher
-Set-StartScreenOptions -EnableBootToDesktop -EnableDesktopBackgroundOnStart -EnableShowStartOnActiveScreen -EnableShowAppsViewOnStartScreen -EnableSearchEverywhereInAppsView -EnableListDesktopAppsFirst
-
-
-
-
 if (Test-PendingReboot) { Invoke-Reboot }
+
