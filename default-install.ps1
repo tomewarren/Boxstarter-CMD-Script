@@ -17,7 +17,6 @@ Disable-UAC
 #--- Fonts ---
 Write-Host "Fonts"
 choco install inconsolata -y
-choco install -y ubuntu.font
 choco install -y Chocolatey 
 
   
@@ -35,12 +34,12 @@ Disable-InternetExplorerESC
 
 
 #--- Windows Subsystems/Features ---
-Write-Host "linux?"
-choco install Microsoft-Hyper-V-All -source windowsFeatures -y
-choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures -y
-
+#Write-Host "linux?"
+#choco install Microsoft-Hyper-V-All -source windowsFeatures -y
+#choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures -y
+#
 #--- Install Ubuntu in WSL
-lxrun /install /y
+#lxrun /install /y
 
 Write-Host "tools!"
 #--- Tools ---
@@ -69,17 +68,17 @@ If ($gaming -eq $True) {
 
 Write-Host "files!"
 #--- Notepad++ file Association ---
-Install-ChocolateyFileAssociation ".txt" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".xml" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".nuspec" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".config" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".ps1" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".bat" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".sh" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".log" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".bash" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".html" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
-Install-ChocolateyFileAssociation ".py" "${env:ProgramFiles}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".txt" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".xml" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".nuspec" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".config" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".ps1" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".bat" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".sh" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".log" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".bash" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".html" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
+Install-ChocolateyFileAssociation ".py" "${env:ProgramFiles(x86)}\Notepad++\Notepad++.exe"
 
 #--- Uninstall unecessary applications that come with Windows out of the box ---
 
@@ -137,14 +136,6 @@ Get-AppxPackage *MarchofEmpires* | Remove-AppxPackage
 
 # McAfee Security
 Get-AppxPackage *McAfee* | Remove-AppxPackage
-
-# Uninstall McAfee Security App
-$mcafee = gci "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall" | foreach { gp $_.PSPath } | ? { $_ -match "McAfee Security" } | select UninstallString
-if ($mcafee) {
-	$mcafee = $mcafee.UninstallString -Replace "C:\Program Files\McAfee\MSC\mcuihost.exe",""
-	Write "Uninstalling McAfee..."
-	start-process "C:\Program Files\McAfee\MSC\mcuihost.exe" -arg "$mcafee" -Wait
-}
 
 # Messaging
 Get-AppxPackage Microsoft.Messaging | Remove-AppxPackage
