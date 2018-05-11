@@ -18,6 +18,7 @@ Disable-UAC
 Write-Host "Fonts"
 choco install inconsolata -y
 choco install -y Chocolatey 
+cinst -y boxstarter
 
   
 #--- Windows Settings ---
