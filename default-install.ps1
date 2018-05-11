@@ -44,6 +44,7 @@ Disable-InternetExplorerESC
 Write-Host "tools!"
 #--- Tools ---
 choco install sysinternals -y
+cinst -y VisualStudioCode
 
 Write-Host "apps"
 #--- Apps ---
