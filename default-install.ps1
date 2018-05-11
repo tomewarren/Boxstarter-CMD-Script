@@ -26,8 +26,7 @@ Disable-BingSearch
 Disable-GameBarTips
 
 Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtectedOSFiles -EnableShowFileExtensions -EnableShowFullPathInTitleBar -EnableOpenFileExplorerToQuickAccess -EnableShowRecentFilesInQuickAccess -EnableShowFrequentFoldersInQuickAccess -EnableExpandToOpenFolder
-Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -Lock
-Set-TaskbarOptions -Size Small -Dock Bottom -Combine Full -AlwaysShowIconsOn
+Set-TaskbarOptions -Size Large -Dock Bottom -Combine Always -AlwaysShowIconsOn -Lock
 Update-ExecutionPolicy Unrestricted -Force
 Enable-RemoteDesktop
 Disable-InternetExplorerESC
