@@ -9,7 +9,7 @@ $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a r
 #--- Configuration ---
 Write-Host "Config"
 #$gaming = $True
-$computername = "lt-twarren"
+$computername = "tom-desktop-home"
 
 #---- TEMPORARY ---
 Disable-UAC
