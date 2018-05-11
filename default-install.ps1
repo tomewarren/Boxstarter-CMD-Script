@@ -47,6 +47,10 @@ cinst -y VisualStudioCode
 cinst -y git
 cinst -y vscode-powershell
 cinst -y vscode-tslint
+cinst -y ditto
+cinst -y keypirinha
+cinst -y keepass
+
 Write-Host "apps"
 #--- Apps ---
 cinst -y powershell
