@@ -273,7 +273,7 @@ If (-Not (Test-Path "HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Adv
 Set-ItemProperty -Path "HKCU:SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name PeopleBand -Type DWord -Value 0
 
 #--- Restore Temporary Settings ---
-Enable-UAC
+#Enable-UAC
 Enable-MicrosoftUpdate
 Install-WindowsUpdate -acceptEula
 
