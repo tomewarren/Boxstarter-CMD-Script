@@ -50,7 +50,7 @@ Write-Host "apps"
 cinst -y powershell
 choco install googlechrome -y
 choco install firefox -y
-choco install docker-for-windows -y
+#choco install docker-for-windows -y
 choco install notepadplusplus -y
 cinst -y windirstat
 choco install cmder -y
