@@ -45,7 +45,9 @@ Write-Host "tools!"
 #--- Tools ---
 choco install sysinternals -y
 cinst -y VisualStudioCode
-
+cinst -y git
+cinst -y vscode-powershell
+cinst -y vscode-tslint
 Write-Host "apps"
 #--- Apps ---
 cinst -y powershell
