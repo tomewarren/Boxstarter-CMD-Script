@@ -38,8 +38,14 @@ Disable-InternetExplorerESC
 #choco install Microsoft-Hyper-V-All -source windowsFeatures -y
 #choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures -y
 #
-#--- Install Ubuntu in WSL
-#lxrun /install /y
+#Install Ubuntu in WSL
+#choco install ubuntu -y
+#choco install -y boxstarter
+
+
+#--- Windows System ---
+Write-Host "Windows System"
+
 
 Write-Host "tools!"
 #--- Tools ---
@@ -55,8 +61,10 @@ cinst -y keepass
 Write-Host "apps"
 #--- Apps ---
 cinst -y powershell
+cinst -y git
 choco install googlechrome -y
 choco install firefox -y
+
 #choco install docker-for-windows -y
 choco install notepadplusplus -y
 cinst -y windirstat
@@ -71,6 +79,7 @@ If ($gaming -eq $True) {
     choco install steam -y
     choco install obs-studio -y
     choco install discord -y
+    
 }
 
 Write-Host "files!"
