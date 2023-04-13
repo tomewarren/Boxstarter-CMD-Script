@@ -6,7 +6,7 @@
 # START http://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/tomewarren/Boxstarter-CMD-Script/master/servers.ps1
 
 #==================================================== 
-# Boxstarter options
+# Boxstarter optionsg
 $Boxstarter.RebootOk=$true # Allow reboots?
 $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
 
